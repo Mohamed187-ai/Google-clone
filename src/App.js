@@ -2,8 +2,8 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hi Mo</h1>
+    <div>
+      <h1 className="text-3xl font-bold underline">Hi Mo</h1>
     </div>
   );
 }
