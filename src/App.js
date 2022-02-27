@@ -1,9 +1,17 @@
-import './App.css';
+import React, { useState } from 'react';
+import { Navbar } from './components/Navbar.jsx'
+import { Footer } from './components/Footer.jsx'
+import { Routes } from './components/Routes.jsx'
 
 function App() {
+  const [darkTheme, setDarkTheme] = useState(false);
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hi Mo</h1>
+    <div className={darkTheme ? 'dark' : ''}>
+      <div className='bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen'>
+        <Navbar />
+        <Routes />
+        <Footer />
+      </div>
     </div>
   );
 }
