@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Rings } from 'react-loader-spinner';
 
 export const Loading = () => {
   return (
-    <div>Loading</div>
+    <div className='flex justify-center items-center'>
+      <Rings ariaLabel="loading-indicator" color="#00BFFF" height={550} width={80} />
+    </div>
   )
 }
