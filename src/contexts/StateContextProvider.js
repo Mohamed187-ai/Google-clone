@@ -5,11 +5,11 @@ const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1'
 export const StateContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('cats');
 
   const getResults = async (type) => {
     setLoading(true);
-    const response = await fetch(`${baseUrl}/search?q=${type}`, {
+    const response = await fetch(`${baseUrl}${type}`, {
       method: 'GET',
       headers: {
         'x-rapidapi-host': 'google-search3.p.rapidapi.com',
@@ -17,7 +17,13 @@ export const StateContextProvider = ({ children }) => {
       }
     })
     const data = await response.json();
-    setResults(data);
+    if(type.includes('/news')) {
+      setResults(data.entries);
+    }else if(type.includes('/images')) {
+      setResults(data.images_results);
+    }else{
+      setResults(data.results);
+    }
     setLoading(false);
   }
   return (
